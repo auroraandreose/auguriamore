@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Per te 💌</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      min-height: 100vh;
+      background: linear-gradient(180deg, #fff8f5 0%, #f8efe9 100%);
+      color: #4a3a35;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 24px;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 520px;
+      background: rgba(255, 255, 255, 0.92);
+      border-radius: 24px;
+      padding: 32px 24px;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+      text-align: center;
+    }
+
+    .emoji {
+      font-size: 2.2rem;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 14px;
+      line-height: 1.2;
+    }
+
+    .subtitle {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #6a5751;
+      margin-bottom: 26px;
+    }
+
+    .section {
+      display: none;
+      animation: fadeIn 0.6s ease;
+    }
+
+    .section.active {
+      display: block;
+    }
+
+    .hint-box {
+      background: #fff5f1;
+      border: 1px solid #f1d6cb;
+      border-radius: 18px;
+      padding: 20px;
+      margin: 18px 0;
+      line-height: 1.7;
+      font-size: 1rem;
+    }
+
+    .final-box {
+      background: #fdf3e7;
+      border: 1px solid #ecd7bb;
+      border-radius: 18px;
+      padding: 22px;
+      margin: 20px 0;
+      line-height: 1.8;
+    }
+
+    button {
+      background: #b96f5d;
+      color: white;
+      border: none;
+      padding: 14px 22px;
+      font-size: 1rem;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+      margin-top: 12px;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      opacity: 0.95;
+    }
+
+    .small {
+      margin-top: 18px;
+      font-size: 0.92rem;
+      color: #7b6761;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .card {
+        padding: 28px 18px;
+      }
+
+      h1 {
+        font-size: 1.7rem;
+      }
+
+      .subtitle,
+      .hint-box,
+      .final-box {
+        font-size: 0.98rem;
+      }
+
+      button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div id="step1" class="section active">
+      <div class="emoji">💌</div>
+      <h1>Ho preparato una sorpresa per te</h1>
+      <p class="subtitle">
+        Non potevo semplicemente dirtelo così...<br>
+        quindi ho pensato a un piccolo percorso, solo per noi.
+      </p>
+      <button onclick="nextStep(2)">Inizia la sorpresa</button>
+      <p class="small">Aprila fino in fondo ✨</p>
+    </div>
+
+    <div id="step2" class="section">
+      <div class="emoji">🍇</div>
+      <h1>Primo indizio</h1>
+      <div class="hint-box">
+        C'è un posto speciale, fatto di colline, quiete e calici da brindare insieme.
+      </div>
+      <button onclick="nextStep(3)">Vai avanti</button>
+    </div>
+
+    <div id="step3" class="section">
+      <div class="emoji">🌿</div>
+      <h1>Secondo indizio</h1>
+      <div class="hint-box">
+        È in Toscana, tra paesaggi bellissimi e sapori che meritano di essere vissuti con calma.
+      </div>
+      <button onclick="nextStep(4)">Ancora un po'</button>
+    </div>
+
+    <div id="step4" class="section">
+      <div class="emoji">🍷</div>
+      <h1>Ultimo indizio</h1>
+      <div class="hint-box">
+        Ci saranno vino, relax e una notte tutta per noi in un posto davvero speciale.
+      </div>
+      <button onclick="nextStep(5)">Scopri il regalo</button>
+    </div>
+
+    <div id="step5" class="section">
+      <div class="emoji">❤️</div>
+      <h1>Sorpresa!</h1>
+      <div class="final-box">
+        Per il nostro anniversario ti regalo <strong>una degustazione di vini nel Chianti</strong><br>
+        con <strong>una notte in hotel</strong>, così da viverci tutto con calma,
+        brindare insieme e goderci un momento solo nostro. 🍷
+      </div>
+      <p class="subtitle">
+        Spero ti renda felice almeno quanto rende felice me l'idea di viverlo con te.
+      </p>
+      <button onclick="restart()">Ricomincia</button>
+    </div>
+  </div>
+
+  <script>
+    function nextStep(stepNumber) {
+      document.querySelectorAll('.section').forEach(section => {
+        section.classList.remove('active');
+      });
+      document.getElementById(`step${stepNumber}`).classList.add('active');
+    }
+
+    function restart() {
+      nextStep(1);
+    }
+  </script>
+</body>
+</html>
